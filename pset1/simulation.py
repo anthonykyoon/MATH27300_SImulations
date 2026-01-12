@@ -104,10 +104,12 @@ def make_table(f, method, x0, t0, T):
 
 if __name__ == "__main__":
     print("Simulating \dot\{x\} = x where solution is equal to x(t) = e^t")
-    print_out = input("Do you want tables outputted in terminal (Y\N)")
-    csv = input("Do you want export as CSV? The CSVs will be saved in this directory (Y/N)")
+    print_out = input("Do you want tables outputted in terminal (Y or N):   ")
+    csv = input("Do you want export as CSV? The CSVs will be saved in this directory (Y or N):    ")
+    csv = csv.lower()
+    print_out = print_out.lower()
 
-    if csv.lower != "y" and print_out.lower != "y":
+    if csv != "y" and print_out != "y":
         raise ValueError("Did not want anything to be returned ")
 
     x0 = 1.0
@@ -118,7 +120,7 @@ if __name__ == "__main__":
     table_midpoint = make_table(foc, midpoint_method, x0, t0, T)
     table_rk = make_table(foc, runge_kutta, x0, t0, T)
 
-    if csv.lower == "y" and print_out.lower == "y":
+    if csv == "y" and print_out == "y":
         print("Euler Method")
         print(table_euler)
         print("\nMidpoint Method")
@@ -129,20 +131,15 @@ if __name__ == "__main__":
         table_euler.to_csv("euler_table.csv", index = False, float_format = "%.12e")
         table_midpoint.to_csv("midpoint_table.csv", index = False, float_format="%.12e")
         table_rk.to_csv("range_kuta.csv", index = False, float_format="%.12e" )
-    elif csv.lower == "y" and print_out.lower != "y":
+    elif csv == "y" and print_out != "y":
         print("exporting tables as CSVs")
         table_euler.to_csv("euler_table.csv", index = False, float_format = "%.12e")
         table_midpoint.to_csv("midpoint_table.csv", index = False, float_format="%.12e")
         table_rk.to_csv("range_kuta.csv", index = False, float_format="%.12e" )
-    elif csv.lower != "y" and print_out.lower == "y":
+    elif csv != "y" and print_out == "y":
         print("Euler Method")
         print(table_euler)
         print("\nMidpoint Method")
         print(table_midpoint)
         print("\nRunge–Kutta 4")
         print(table_rk)
-
-
-
-
-
