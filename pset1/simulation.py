@@ -95,7 +95,7 @@ def make_table(f, method, x0, t0, T):
         x_num = method(f, x0, t0, T, h)
         err = abs(x_num - math.e)
 
-        rows.append((N, x_num, err))
+        rows.append((k, x_num, err))
 
     return pd.DataFrame(
         rows,
