@@ -1,5 +1,6 @@
 import pandas as pd
 import math
+import matplotlib as plt
 
 
 def euler_method(f, x0, t0, T, h):
@@ -11,7 +12,6 @@ def euler_method(f, x0, t0, T, h):
     h: step size
 
     Returns ONLY the final value x(T).
-    Uses only two pointers (t_n, x_n).
     """
     t = t0
     x = x0
@@ -31,7 +31,6 @@ def midpoint_method(f, x0, t0, T, h):
     h : step size
 
     Returns ONLY the final value x(T).
-    Uses only two pointers (t_n, x_n).
     """
     t = t0
     x = x0
@@ -54,7 +53,6 @@ def runge_kutta(f, x0, t0, T, h):
     h: time step
 
     Returns ONLY the final value x(T).
-    Uses only two pointers (t_n, x_n).
     """
     t = t0
     x = x0
